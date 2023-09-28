@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import AuthContext from '../Context/AuthContext';
 import CartContext from '../Context/CartContext';
+import './Navbar.css'
 import { useMsal } from '@azure/msal-react'; // Ensure you've installed and imported from the correct package
 // import './styles.css'; // Import the styles
 import { loginRequest } from '../AuthConfig';
+import { FaShoppingCart } from "react-icons/fa";
+
 
 const Navbar = ({ history }) => {
   const { auth, setAuth } = useContext(AuthContext);
@@ -23,17 +26,17 @@ const Navbar = ({ history }) => {
 
   return (
     <div className="navbar">
-      <div>Navbar</div>
+      <div id='navtitle'>Roary's Shelter</div>
       <div className="cart">
-        <div className="cart-logo">🛒</div>
+        <div className="cart-logo"><FaShoppingCart size={28}/></div>
         <div className="cart-count">{cart.length}</div>
       </div>
       {!auth.user ? (
-        <button className="button" onClick={login}>
+        <button className="linbutton" onClick={login}>
           Login
         </button>
       ) : (
-        <button className="button" onClick={logout}>
+        <button className="linbutton" onClick={logout}>
           Logout
         </button>
       )}

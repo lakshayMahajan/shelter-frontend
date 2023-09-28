@@ -13,6 +13,8 @@ import CreateCategory from './TeacherUtil/CreateCategory';
 import SubmitForm from './StudentUtil/SubmitForm';
 import ViewSubmissions from './TeacherUtil/ViewForm';
 import ViewSubmittedForms from './StudentUtil/ViewSubmittedForms';
+import Home from './StudentUtil/Home';
+import './App.css';
 function App() {
   const [auth, setAuth] = useState({
     isAuth: false,
@@ -149,6 +151,7 @@ useEffect(() => {
 }, [cart]);
   
   return (
+    <div id='app'>
     <AuthContext.Provider value={{ auth, setAuth }}>
       <CartContext.Provider value={{cart,setCart}}>
         <Navbar />
@@ -156,8 +159,12 @@ useEffect(() => {
           <ViewSubmissions />
          <SubmitForm />
           <ViewSubmittedForms />
+          <Navbar />
+          <Order/>
+         
        </CartContext.Provider>
       </AuthContext.Provider >
+      </div>
   );
 }
 
