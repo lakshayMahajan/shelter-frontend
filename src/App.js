@@ -9,6 +9,10 @@ import Navbar from './StudentUtil/Navbar';
 import CreateProduct from './TeacherUtil/CreateProduct';
 import Product from './StudentUtil/Product';
 import Order from './StudentUtil/Order';
+import CreateCategory from './TeacherUtil/CreateCategory';
+import SubmitForm from './StudentUtil/SubmitForm';
+import ViewSubmissions from './TeacherUtil/ViewForm';
+import ViewSubmittedForms from './StudentUtil/ViewSubmittedForms';
 function App() {
   const [auth, setAuth] = useState({
     isAuth: false,
@@ -147,11 +151,11 @@ useEffect(() => {
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
       <CartContext.Provider value={{cart,setCart}}>
-          <Navbar />
-          {/* <CreateProduct /> */}
-          <Order />
-          <Product />
-
+        <Navbar />
+          <CreateCategory />
+          <ViewSubmissions />
+         <SubmitForm />
+          <ViewSubmittedForms />
        </CartContext.Provider>
       </AuthContext.Provider >
   );
