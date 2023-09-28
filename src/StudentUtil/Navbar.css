@@ -1,0 +1,91 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-bottom-style:solid;
+    border-bottom-width: 0.5px;
+    border-bottom-color: lightgray ;
+}
+.cart{
+    display: flex;
+    flex-direction: row;
+    padding-top: 5px;
+    padding-right: 20px;
+    justify-content: flex-end;
+    margin-left: 33.3%;
+    flex: 0 0 28.33333333%;
+}
+
+#navtitle{
+    font-size: 24px;
+    flex: 0 0 33%;
+    white-space: nowrap;
+}
+@media screen and (width <= 1700px) {
+    .cart{
+        display: flex;
+        flex-direction: row;
+        padding-top: 5px;
+        padding-right: 20px;
+        justify-content: flex-end;
+        margin-left: 33.3%;
+        flex: 0 0 25%;
+    }
+}
+
+@media screen and (width <= 950px) {
+    .cart{
+        display: flex;
+        flex-direction: row;
+        padding-top: 5px;
+        padding-right: 20px;
+        justify-content: flex-end;
+        margin-left: 33.3%;
+        flex: 0 0 13%;
+    }
+}
+
+.linbutton{
+    background-color: #1966ae;
+    border-radius: 3px;
+    border-color: transparent;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@media screen and (width <= 440px) {
+    .cart{
+        display: flex;
+        flex-direction: row;
+        padding-top: 5px;
+        padding-right: 20px;
+        justify-content: flex-end;
+        margin-left: 23.3%;
+        flex: 0 0 0%;
+    }
+   
+}
+
+.cart-logo{
+    margin-top: -2px;
+    margin-right:-4px;
+    size: 70px;
+}
+.cart-count{
+    background-color: #1966ae;
+    border-radius: 100px;
+    color: #fff;
+    height: 8px;
+    padding-bottom: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: -100px;
+    position: relative;
+    right: 4px;
+    top: 6px;
+}

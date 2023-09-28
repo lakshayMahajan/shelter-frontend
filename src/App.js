@@ -9,6 +9,8 @@ import Navbar from './StudentUtil/Navbar';
 import CreateProduct from './TeacherUtil/CreateProduct';
 import Product from './StudentUtil/Product';
 import Order from './StudentUtil/Order';
+import Home from './StudentUtil/Home';
+import './App.css';
 function App() {
   const [auth, setAuth] = useState({
     isAuth: false,
@@ -145,15 +147,15 @@ useEffect(() => {
 }, [cart]);
   
   return (
+    <div id='app'>
     <AuthContext.Provider value={{ auth, setAuth }}>
       <CartContext.Provider value={{cart,setCart}}>
           <Navbar />
-          {/* <CreateProduct /> */}
-          <Order />
-          <Product />
-
+          <Order/>
+         
        </CartContext.Provider>
       </AuthContext.Provider >
+      </div>
   );
 }
 
