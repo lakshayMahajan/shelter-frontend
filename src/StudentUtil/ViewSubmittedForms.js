@@ -14,6 +14,7 @@ const ViewSubmittedForms = ({ userId }) => {
           userId = auth.user.localAccountId;
         }
         const response = await axios.get(`http://localhost:4000/products/getForm/${userId}`);
+        console.log(response.data);
         setForms(response.data);
       } catch (err) {
         setError(err.response ? err.response.data.message : err.message);
@@ -83,6 +84,7 @@ const ViewSubmittedForms = ({ userId }) => {
             <button onClick={() => handleSave(index)}>Save</button>
             <p><strong>Approved:</strong> {form.approved ? 'Yes' : 'No'}</p>
             <p><strong>Locker ID:</strong> {form.locker}</p>
+            <p><strong>Teacher Note</strong>{form.teacherNote}</p>
           </div>
         ))
       ) : (
