@@ -13,6 +13,16 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
+@media screen and (width <= 1440px) {
+  #orderscard{
+    width: 85vw;
+    background-color: white;
+    margin: auto;
+    height: 100%;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+}
 #neworder{
   align-items: center;
   background-color: #FFFFFF;
@@ -140,10 +150,10 @@ border-radius: 10px;
  
   padding: 12px 30px;
   text-align: center;
-  
+  background: linear-gradient(90deg, rgba(30,106,255,1) 21%, rgba(25,102,174,1) 74%);
   transition: 0.5s;
   background-size: 200% auto;
-  color: #000000;
+  color: white;
   border-radius: 10px;
   display: block;
   border: 0px;
@@ -179,16 +189,17 @@ border-radius: 10px;
  
   padding: 12px 30px;
   text-align: center;
-  
+  border-style: solid;
+  border-color: darkred;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;
+  color: darkred;
   border-radius: 10px;
   display: block;
-  border: 0px;
+  border-width: 1.3px;
   font-weight: 400;
-  box-shadow: 0px 0px 14px -7px #240000;
-  background-image:  linear-gradient(90deg, rgba(255,121,30,1) 20%, rgba(255,60,0,1) 74%);
+
+  background-color: transparent;
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
@@ -200,6 +211,7 @@ border-radius: 10px;
   /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
+  background-color: darkred;
 }
 
 #modifybutton1:active {
@@ -218,3 +230,72 @@ border-radius: 10px;
     display: flex;
     flex-direction: column;
 }
+
+.popup-content{
+  width: 400px;
+  max-height: 100vh;
+  border-radius: 10px;
+  border-style: solid;
+  padding-left: ;
+}
+
+#header{
+  font-size: 40px;
+  font-weight: 300;
+  margin-bottom: 50px;
+  margin-left: 100px;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#orderforms{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  flex: 1;
+}
+
+#studentdate{
+  border-style: hidden;
+  border-bottom-style: solid;
+  width: 95%;
+  margin-bottom: 25px;
+}
+#studentdate:hover{
+  outline-width: 0;
+  border-bottom-color: #1966ae;
+  cursor: pointer;
+}
+#studentdate:focus{
+  outline-width: 0;
+  border-bottom-color: #1966ae;
+}
+
+#studentnote{
+  width: 95%;
+  border-style: hidden;
+  border-bottom-style: solid;
+  height: 8vh;
+  border-bottom-width: 2px;
+  margin-top: 50px;
+  border-bottom-width: 2px;
+  margin-bottom: 20px;
+}
+
+#studentnote:hover{
+  outline-width: 0;
+  border-bottom-color: #1966ae;
+  cursor: pointer;
+}
+#studentnote:focus{
+  outline-width: 0;
+  border-bottom-color: #1966ae;
+}
+
+#formbuttons{
+  margin-right:10px;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-around
+  ;
+}
+
