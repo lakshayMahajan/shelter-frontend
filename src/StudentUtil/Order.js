@@ -80,8 +80,10 @@ function Order() {
           Select Categories:
           <div>
             {categories.map(category => (
-              <label key={category._id}>
+              <div>
+              <label  key={category._id}>
                 <input 
+                
                   type="checkbox" 
                   value={category.name} 
                   onChange={handleCategoryChange} 
@@ -89,6 +91,7 @@ function Order() {
                 />
                 {category.name}
               </label>
+              </div>
             ))}
           </div>
         </div>
