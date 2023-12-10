@@ -170,6 +170,18 @@ useEffect(() => {
                     path={"/cart"}
                     element={<CreateCategory />}
                   />
+                  <Route
+                    path={"/"}
+                    element={<CreateCategory />}
+                  />
+                  <Route
+                    path={"/"}
+                    element={<Order />}  
+                  />
+                  <Route
+                    path={"/"}
+                    element={<ViewSubmissions />}  
+                  />
           {/* <CreateCategory />
           <ViewSubmissions />
          
