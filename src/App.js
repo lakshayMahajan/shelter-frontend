@@ -15,7 +15,7 @@ import ViewSubmissions from './TeacherUtil/ViewForm';
 import ViewSubmittedForms from './StudentUtil/ViewSubmittedForms';
 import Home from './StudentUtil/Home';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   const [auth, setAuth] = useState({
@@ -155,16 +155,32 @@ useEffect(() => {
   return (
     <div id='app'>
     <AuthContext.Provider value={{ auth, setAuth }}>
+    
       <CartContext.Provider value={{cart,setCart}}>
-        <Navbar />
-          <CreateCategory />
+      <Router>
+      <Navbar />
+        <Routes>
+        
+        
+        if (auth.user.role === 'student') {
+
+          
+        }
+        <Route
+                    path={"/cart"}
+                    element={<CreateCategory />}
+                  />
+          {/* <CreateCategory />
           <ViewSubmissions />
          
           
           <Navbar />
-          <Order/>
-         
+          <Order/> */}
+        </Routes>
+         </Router>
+
        </CartContext.Provider>
+      
       </AuthContext.Provider >
       </div>
   );
