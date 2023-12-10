@@ -15,6 +15,8 @@ import ViewSubmissions from './TeacherUtil/ViewForm';
 import ViewSubmittedForms from './StudentUtil/ViewSubmittedForms';
 import Home from './StudentUtil/Home';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 function App() {
   const [auth, setAuth] = useState({
     isAuth: false,
@@ -157,8 +159,8 @@ useEffect(() => {
         <Navbar />
           <CreateCategory />
           <ViewSubmissions />
-         <SubmitForm />
-          <ViewSubmittedForms />
+         
+          
           <Navbar />
           <Order/>
          

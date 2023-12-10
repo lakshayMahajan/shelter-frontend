@@ -47,11 +47,18 @@ function Order() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("getting locker")
+      const locker = await axios.get('http://localhost:4000/products/random-locker');
+      if(!locker.data){
+        setMessage('No lockers available');
+        return;
+      }
       await axios.post('http://localhost:4000/user/createform', { 
         categories: selectedCategories, 
         user: auth.user.localAccountId,
         note,
-        date: selectedDate 
+        date: selectedDate,
+        locker: locker.data._id,
       });
       setMessage('Form submitted successfully!');
       setSelectedCategories([]);

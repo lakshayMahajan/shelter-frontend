@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './CreateCatagory.css'
+import Popup from 'reactjs-popup';
 
 const CreateCategory = () => {
   const [categoryName, setCategoryName] = useState('');
@@ -45,23 +47,53 @@ const CreateCategory = () => {
   };
 
   return (
-    <div>
-        <h1>Create Category</h1>
-      <form onSubmit={handleFormSubmit}>
+    <div id='cateback'>
+      <div id='catecard'>
+        <div id='catetop'>
+        <h1 id='catehead'>Categories</h1>
+        <Popup trigger={  <button id='newcate'>+ New</button>}
+    modal>
+      {close => (
+        <div>
+      <div id='header'>New Category</div>
+  <section id='orderforms'>
+  <div>
+    
+
+  <form onSubmit={handleFormSubmit}>
+    <div id='cateform'>
         <label>
-          Category Name:
-          <input type="text" value={categoryName} onChange={handleInputChange} required />
+          
+          <input id='studentnote' placeholder='Category Name' type="text" value={categoryName} onChange={handleInputChange} required />
         </label>
-        <button type="submit">Create Category</button>
-      </form>
+       
+      
+                </div>
+                <div id='formbuttons'>
+        <button  onClick={close} id='modifybutton1'>Cancel Update</button>
+        <button  id='modifybutton' type="submit">Submit Update</button>
+        </div>
+        </form>
+
+        </div>
+        
+  </section>
+  
+  </div>
+)}
+    </Popup>
+       
+        </div>
+      
       {message && <p>{message}</p>}
       <ul>
         {categories.map(category => (
-          <li key={category._id}>
+          <div key={category._id}>
             {category.name} <button onClick={() => handleDelete(category._id)}>X</button>
-          </li>
+          </div>
         ))}
       </ul>
+      </div>
     </div>
   );
 };
