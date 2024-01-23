@@ -1,5 +1,4 @@
-import React, { useContext, useState,useEffect } from 'react';
-
+import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import CartContext from '../Context/CartContext';
 import AuthContext from '../Context/AuthContext';
@@ -13,13 +12,14 @@ function Order() {
   const [note, setNote] = useState('');
   const [message, setMessage] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
+  const [forms, setForms] = useState([]);
+  const [error, setError] = useState('');
   const { auth } = useContext(AuthContext);
-
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/products');
+        const response = await axios.get('http://localhost:4000/products/getForm');
         setCategories(response.data);
       } catch (error) {
         setMessage(`Error fetching categories: ${error.response.data.message}`);
@@ -27,6 +27,21 @@ function Order() {
     };
     fetchCategories();
   }, []);
+
+  useEffect(() => {
+    const fetchForms = async () => {
+      try {
+        if (auth.isAuth && auth.user) {
+          const userId = auth.user.localAccountId;
+          const response = await axios.get(`http://localhost:4000/products/getForm/${userId}`);
+          setForms(response.data);
+        }
+      } catch (err) {
+        setError(err.response ? err.response.data.message : err.message);
+      }
+    };
+    fetchForms();
+  }, [auth]);
 
   const handleCategoryChange = (e) => {
     const value = e.target.value;
@@ -40,20 +55,20 @@ function Order() {
   const handleNoteChange = (e) => {
     setNote(e.target.value);
   };
+
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
-};
+  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("getting locker")
       const locker = await axios.get('http://localhost:4000/products/random-locker');
-      if(!locker.data){
+      if (!locker.data) {
         setMessage('No lockers available');
         return;
       }
-      await axios.post('http://localhost:4000/user/createform', { 
+      await axios.post('http://localhost:4000/user/createform', {
         categories: selectedCategories, 
         user: auth.user.localAccountId,
         note,
@@ -127,60 +142,52 @@ function Order() {
     <h4 id='ocll'>Locker Info</h4>
   </div>
   <div id='ordercarddiv'>
-   <div id='ordercard'>
-   <div className='ocinfo' id='items'>
-   <h4 id='ocol'>Item</h4>
-   <h4 id='ocol'>Item</h4>
-   <h4 id='ocol'>Item</h4>
-   <h4 id='ocol'>Item</h4>
-    </div>
-    <div id='status' className='ocinfo' >
-    <h4 id='ocol'>September 27, 2023</h4>
-   
-       </div>
-    <div id='modifybuttons' className='ocinfo2'> 
-    <h4 id='ocolp'>PENDING</h4>
-    </div>
-    <div id='modifybuttons' className='ocinfo3'> 
-    <h4 id='ocol'>JXXX</h4>
-    <h4 id='ocol'>XX-XX-XX</h4>
-    </div>
-    <div id='modifybuttons' className='ocinfo4'> 
-    <Popup trigger={ <button id='modifybutton'>Change Date</button>}
-    modal>
-      {close => (
-        <div>
-      <div id='header'>Update Date</div>
-  <section id='orderforms'>
-  <div>
-                     Date:   <div></div>
-                    <input id='studentdate'type="date" value={selectedDate} onChange={handleDateChange} required />
-                </div>
-                <div id='formbuttons'>
-        <button  onClick={close} id='modifybutton1'>Cancel Change</button>
-        <button  id='modifybutton' type="submit">Submit Update</button>
+    {forms.map((form, index) => (
+      <div key={index} id='ordercard'>
+        <div className='ocinfo' id='items'>
+          {form.categories.map((category, catIndex) => (
+            <h4 key={catIndex} id='ocol'>{category}</h4>
+          ))}
         </div>
-  </section>
+        <div id='status' className='ocinfo'>
+          <h4 id='ocol'>{new Date(form.date).toLocaleDateString()}</h4>
+        </div>
+        <div id='modifybuttons' className='ocinfo2'>
+          <h4 id='ocolp'>{form.approved ? 'APPROVED' : 'PENDING'}</h4>
+        </div>
+        <div id='modifybuttons' className='ocinfo3'>
+          <h4 id='ocol'>{form.locker}</h4>
+        </div>
+        <div id='modifybuttons' className='ocinfo4'>
+          <Popup trigger={<button id='modifybutton'>Change Date</button>} modal>
+            {close => (
+              <div>
+                <div id='header'>Update Date</div>
+                <section id='orderforms'>
+                  <div>
+                    Date: <input id='studentdate' type="date" value={selectedDate} onChange={handleDateChange} required />
+                  </div>
+                  <div id='formbuttons'>
+                    <button onClick={close} id='modifybutton1'>Cancel Change</button>
+                    <button id='modifybutton' type="submit">Submit Update</button>
+                  </div>
+                </section>
+              </div>
+            )}
+          </Popup>
+          <button id='modifybutton1'>Cancel Order</button>
+          <Popup trigger={<h6 id='noteview'>View Note</h6>} closeOnDocumentClick>
+            {close => (
+              <div>
+                {form.note || "No note right now"}
+              </div>
+            )}
+          </Popup>
+        </div>
+      </div>
+    ))}
   </div>
-)}
-    </Popup>
-   
-    <button id='modifybutton1'>Cancel Order</button>
-    <Popup trigger={<h6 id='noteview'>View Note</h6> 
-} closeOnDocumentClick>
-{close => (
-<div>
-  No note right now
 </div>
-)}
-</Popup>
-    </div>
-    
-    </div>
-    <br id='cardbreak' />
-   </div>
-   
-   </div>
    
   </div>
   );

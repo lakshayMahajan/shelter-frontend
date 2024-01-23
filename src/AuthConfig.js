@@ -49,9 +49,6 @@ export const msalConfig = {
       },
     },
   },
-
-    allowNativeBroker: false, // Disables native brokering support
-
 };
 
 /**
