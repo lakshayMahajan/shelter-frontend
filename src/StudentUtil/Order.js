@@ -166,6 +166,14 @@ function Order() {
     </Popup>
    
     <button id='modifybutton1'>Cancel Order</button>
+    <Popup trigger={<h6 id='noteview'>View Note</h6> 
+} closeOnDocumentClick>
+{close => (
+<div>
+  No note right now
+</div>
+)}
+</Popup>
     </div>
     
     </div>

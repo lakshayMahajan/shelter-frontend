@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CreateCatagory.css'
 import Popup from 'reactjs-popup';
-
+import { FaPlus } from 'react-icons/fa';
+import { FaClipboard } from 'react-icons/fa';
 const CreateCategory = () => {
   const [categoryName, setCategoryName] = useState('');
   const [categories, setCategories] = useState([]);
@@ -48,6 +49,16 @@ const CreateCategory = () => {
 
   return (
     <div id='cateback'>
+      <div id='tpicker'>
+        <div id='catpickh'>
+          <FaPlus id='pickimage'/>
+          Categories
+        </div>
+        <div id='catpick' href='tview'>
+        <FaClipboard id='pickimage'/>
+        Orders
+        </div>
+      </div>
       <div id='catecard'>
         <div id='catetop'>
         <h1 id='catehead'>Categories</h1>

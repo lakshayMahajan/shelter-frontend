@@ -301,3 +301,12 @@ border-radius: 10px;
 
 #ordercat{
 overflow-y: scroll;}
+
+#noteview{
+  color: #1966ae;
+  text-decoration-line: underline;
+  cursor: pointer;
+  height: 10px;
+  position: relative;
+  bottom: 25px;
+}

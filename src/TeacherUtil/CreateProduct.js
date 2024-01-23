@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import './CreateCatagory.css'
+import Popup from 'reactjs-popup';
+import { FaPlus } from 'react-icons/fa';
+import { FaClipboard } from 'react-icons/fa';
 function CreateProduct() {
   const [productData, setProductData] = useState({
     name: '',

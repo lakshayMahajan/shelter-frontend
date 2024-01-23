@@ -171,15 +171,15 @@ useEffect(() => {
                     element={<CreateCategory />}
                   />
                   <Route
-                    path={"/"}
+                    path={"/tcategories"}
                     element={<CreateCategory />}
                   />
                   <Route
-                    path={"/"}
+                    path={"/order"}
                     element={<Order />}  
                   />
                   <Route
-                    path={"/"}
+                    path={"/tview"}
                     element={<ViewSubmissions />}  
                   />
           {/* <CreateCategory />

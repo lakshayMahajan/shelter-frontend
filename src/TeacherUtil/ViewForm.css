@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
    padding-left: 2.5%;
+   padding-right: 2.5%;
   height: fit-content;
    padding-bottom: 25px;
    padding-top: 1px;
@@ -73,69 +74,18 @@
     flex-direction: row;
   }
 
-  #cateform{
-    margin-left: 15px;
-    margin-bottom: 20px;
+  #orderdiv{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
   }
-
-  #studentnote{
-    width: 95%;
-    border-style: hidden;
-    border-bottom-style: solid;
-    height: 20px;
-    border-bottom-width: 2px;
-   
-    border-bottom-width: 2px;
-    margin-bottom: 20px;
-  }
-  
-  #studentnote:hover{
-    outline-width: 0;
-    border-bottom-color: #1966ae;
-    cursor: pointer;
-  }
-  #studentnote:focus{
-    outline-width: 0;
-    border-bottom-color: #1966ae;
-  }
-
-  #header{
-    font-size: 40px;
-    font-weight: 300;
-    
-    margin-left: 75px;
-    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  }
-  #pickimage{
+  #orderdate{
     position: relative;
-    bottom: -1.5px;
-    margin-right: 20px;
+    left: 55px;
   }
 
-  #catpick{
-margin-top: 10px;
-    height: 40px;
-    width: 175px;
-    padding-left: 15px;
-    vertical-align: middle;
-    padding-top: 20px;
-    border-radius: 10px;
-    
-  }
-
-  #catpickh{
-    margin-top: 10px;
-        height: 40px;
-        width: 175px;
-        padding-left: 15px;
-        vertical-align: middle;
-        padding-top: 20px;
-        border-radius: 10px;
-        background-color: gainsboro;
-        cursor: pointer;
-      }
-
-  #catpick:hover{
+  #orderview{
+    color: #1966ae;
+    text-decoration-line: underline;
     cursor: pointer;
-    background-color: lightgray;
   }

@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../Context/AuthContext';
-
+import './ViewForm.css'
+import Popup from 'reactjs-popup';
+import { FaPlus } from 'react-icons/fa';
+import { FaClipboard } from 'react-icons/fa';
 const ViewForm = ({ userId }) => {
   const [forms, setForms] = useState([]);
   const [error, setError] = useState('');
@@ -59,6 +62,75 @@ const ViewForm = ({ userId }) => {
 
   return (
     <div>
+  <div id='cateback'>
+      <div id='tpicker'>
+        <div id='catpick'>
+          <FaPlus id='pickimage'/>
+          Categories
+        </div>
+        <div id='catpickh' href='tview'>
+        <FaClipboard id='pickimage'/>
+        Orders
+        </div>
+      </div>
+      <div id='catecard'>
+        <div id='catetop'>
+      <h3>Locker #</h3>
+      <h3>Date</h3>
+      <h3> </h3>
+        </div>
+        <div id='orderdiv'>
+          <h6 id='orderlocker'>XXXXXX</h6>
+          <h6 id='orderdate'>XX/XX/XX</h6>
+          <Popup trigger={<h6 id='orderview'>View/Manage</h6> 
+} modal>
+{close => (
+   <div>
+   <div id='header'>View/Manage</div>
+   <section id='orderforms'>
+       
+     <form >
+      <div>
+        Student ID#: XXXXXX
+      </div>
+      <div>
+        Locker#: XXXXXX
+      </div>
+      <div>
+        Note: 
+      </div>
+     <div>
+                    Date:   <div></div>
+                   <input id='studentdate'type="date" value='2024-01-01' required />
+               </div>
+       <div>
+         Selected Categories:
+         <div>
+          <h1>Category 1</h1>
+          <h1>Category 2</h1>
+          <h1>Category 3</h1>
+         </div>
+       </div>
+       <br />
+       <div>
+         
+         <textarea id='studentnote' placeholder='Add a Note' required />
+       </div>
+       <br />
+       <div id='formbuttons'>
+       <button  onClick={close} id='modifybutton1'>Cancel Update</button>
+       <button  id='modifybutton' type="submit">Save and Close</button>
+       </div>
+     </form>
+    
+   </section>
+   </div>
+)}
+ </Popup>
+        </div>
+      </div>
+     </div>
+      
       <h1>Submitted Forms</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {forms.length > 0 ? (
