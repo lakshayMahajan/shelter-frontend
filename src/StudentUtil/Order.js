@@ -19,8 +19,9 @@ function Order() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/products/getForm');
+        const response = await axios.get('http://localhost:4000/products/');
         setCategories(response.data);
+        
       } catch (error) {
         setMessage(`Error fetching categories: ${error.response.data.message}`);
       }
@@ -34,6 +35,7 @@ function Order() {
         if (auth.isAuth && auth.user) {
           const userId = auth.user.localAccountId;
           const response = await axios.get(`http://localhost:4000/products/getForm/${userId}`);
+          console.log(response.data);
           setForms(response.data);
         }
       } catch (err) {
@@ -156,7 +158,9 @@ function Order() {
           <h4 id='ocolp'>{form.approved ? 'APPROVED' : 'PENDING'}</h4>
         </div>
         <div id='modifybuttons' className='ocinfo3'>
-          <h4 id='ocol'>{form.locker}</h4>
+          <h4 id='ocol'>{form.locker.location}</h4>
+          <h4 id='ocol'>{form.locker.locker_id}</h4>
+          <h4 id='ocol'>{form.locker.combo}</h4>
         </div>
         <div id='modifybuttons' className='ocinfo4'>
           <Popup trigger={<button id='modifybutton'>Change Date</button>} modal>

@@ -164,24 +164,27 @@ useEffect(() => {
         
         if (auth.user.role === 'student') {
 
-          
-        }
-        <Route
-                    path={"/cart"}
-                    element={<CreateCategory />}
+          <Route
+                    path={"/"}
+                    element={<Order />}  
                   />
-                  <Route
+        }else(auth.user.role === 'teacher') {
+          <>
+            <Route
                     path={"/tcategories"}
                     element={<CreateCategory />}
                   />
-                  <Route
-                    path={"/order"}
-                    element={<Order />}  
-                  />
-                  <Route
+                   <Route
                     path={"/tview"}
                     element={<ViewSubmissions />}  
                   />
+          </>
+         
+              }
+      
+                  
+                  
+                
           {/* <CreateCategory />
           <ViewSubmissions />
          

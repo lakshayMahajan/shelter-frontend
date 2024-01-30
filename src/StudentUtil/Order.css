@@ -5,7 +5,7 @@
     margin-top:0;
 }
 #orderscard{
-    width: 65vw;
+    width: 80vw;
     background-color: white;
     margin: auto;
     height: 100%;
@@ -22,6 +22,17 @@
     border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
+#orderbuttons{
+  position: relative;
+  left: 20px;
+}
+}
+
+@media screen and (width <= 2200px) {
+  #formbuttons{
+    position: relative;
+    left: 20px;
+  }
 }
 #neworder{
   align-items: center;
@@ -298,6 +309,7 @@ border-radius: 10px;
   justify-content: space-around
   ;
 }
+
 
 #ordercat{
 overflow-y: scroll;}

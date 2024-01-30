@@ -5,6 +5,7 @@ import './ViewForm.css'
 import Popup from 'reactjs-popup';
 import { FaPlus } from 'react-icons/fa';
 import { FaClipboard } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 const ViewForm = ({ userId }) => {
   const [forms, setForms] = useState([]);
   const [error, setError] = useState('');
@@ -70,65 +71,81 @@ const ViewForm = ({ userId }) => {
   
     <div id="mainContent">
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      
+  
       <div id='cateback'>
         <div id='tpicker'>
-          {/* Other elements */}
+        <div id='catpick'>
+        <Link to="/tcategories">
+          <FaPlus id='pickimage'/>
+          Categories
+        </Link>
+        </div>
+        <div id='catpickh' href='tview'>
+        <Link to="/tview">
+        <FaClipboard id='pickimage'/>
+        Orders
+        </Link>
+        </div>
         </div>
   
         {data.length > 0 ? (
-          data.map((formData, index) => (
-            <div key={formData._id} id='catecard'>
-              <div id='catetop'>
-                <h3>Locker # {formData.locker}</h3>
-                <h3>Date {new Date(formData.date).toISOString().split('T')[0]}</h3>
-              </div>
-              <div id='orderdiv'>
-                <h6 id='orderlocker'>{formData.locker}</h6>
-                <h6 id='orderdate'>{new Date(formData.date).toISOString().split('T')[0]}</h6>
-                <Popup trigger={<h6 id='orderview'>View/Manage</h6>} modal>
-                  {close => (
-                    <div>
-                      <div id='header'>View/Manage</div>
-                      <section id='orderforms'>
-                        <form>
-                          <div>
-                            Student ID#: {formData.user}
-                          </div>
-                          <div>
-                            Locker#: {formData.locker}
-                          </div>
-                          <div>
-                            Note: {formData.note}
-                          </div>
-                          <div>
-                            Date: <input id='studentdate' type="date" value={new Date(formData.date).toISOString().split('T')[0]} required />
-                          </div>
-                          <div>
-                            Selected Categories:
+          <div id='catecard'>
+            <div id='catetop'>
+                  <h3>Locker #</h3>
+                  <h3>Date</h3>
+                  <h3></h3>
+                </div>
+            {data.map((formData, index) => (
+              <div key={formData._id}>
+                
+                <div id='orderdiv'>
+                  <h6 id='orderlocker'>{formData.locker.locker_id}</h6>
+                  <h6 id='orderdate'>{new Date(formData.date).toISOString().split('T')[0]}</h6>
+                  <Popup trigger={<h6 id='orderview'>View/Manage</h6>} modal>
+                    {close => (
+                      <div>
+                        <div id='header'>View/Manage</div>
+                        <section id='orderforms'>
+                          <form>
                             <div>
-                              {formData.categories.map((category, catIndex) => (
-                                <h1 key={catIndex}>{category}</h1>
-                              ))}
+                              Student ID#: {formData.user}
                             </div>
-                          </div>
-                          <br />
-                          <div>
-                            <textarea id='studentnote' placeholder='Add a Note' required defaultValue={formData.note} />
-                          </div>
-                          <br />
-                          <div id='formbuttons'>
-                            <button onClick={close} id='modifybutton1'>Cancel Update</button>
-                            <button id='modifybutton' type="submit">Save and Close</button>
-                          </div>
-                        </form>
-                      </section>
-                    </div>
-                  )}
-                </Popup>
+                            <div>
+                              Locker#: {formData.locker.locker_id}
+                            </div>
+                            <div>
+                              Note: {formData.note}
+                            </div>
+                            <div>
+                              Date: <input id='studentdate' type="date" value={new Date(formData.date).toISOString().split('T')[0]} required />
+                            </div>
+                            <div>
+                              Selected Categories:
+                              <div>
+                                {formData.categories.map((category, catIndex) => (
+                                  <h1 key={catIndex}>{category}</h1>
+                                ))}
+                              </div>
+                            </div>
+                            <br />
+                            <div>
+                              <textarea id='studentnote' placeholder='Add a Note' required defaultValue={formData.note} />
+                            </div>
+                            <br />
+                            <div id='formbuttons'>
+                              <button onClick={close} id='modifybutton1'>Cancel Update</button>
+                              <button id='modifybutton' type="submit">Save and Close</button>
+                            </div>
+                          </form>
+                        </section>
+                      </div>
+                    )}
+                  </Popup>
+                </div>
+                {/* Divider or spacing can be added here if needed */}
               </div>
-            </div>
-          ))
+            ))}
+          </div>
         ) : (
           <p>No forms submitted.</p>
         )}

@@ -4,12 +4,14 @@ import './CreateCatagory.css'
 import Popup from 'reactjs-popup';
 import { FaPlus } from 'react-icons/fa';
 import { FaClipboard } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 const CreateCategory = () => {
   const [categoryName, setCategoryName] = useState('');
   const [categories, setCategories] = useState([]);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
+    
     const fetchCategories = async () => {
       try {
         const response = await axios.get('http://localhost:4000/products');
@@ -50,13 +52,19 @@ const CreateCategory = () => {
   return (
     <div id='cateback'>
       <div id='tpicker'>
+      <Link to="/tcategories">
         <div id='catpickh'>
+       
           <FaPlus id='pickimage'/>
           Categories
+          
         </div>
+        </Link>
         <div id='catpick' href='tview'>
+        <Link to="/tview">
         <FaClipboard id='pickimage'/>
         Orders
+        </Link>
         </div>
       </div>
       <div id='catecard'>
